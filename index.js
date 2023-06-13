@@ -27,6 +27,12 @@ function addHabit() {
   }
 }
 
+// Função para remover um hábito da lista
+function removeHabit(index) {
+  habits.splice(index, 1);
+  renderHabits();
+}
+
 // Função para limpar os campos de entrada
 function clearInputs() {
   habitInput.value = '';
@@ -57,10 +63,22 @@ function renderHabits() {
     var habitFrequency = document.createElement('p');
     habitFrequency.textContent = 'Frequência: ' + habits[i].frequency;
     
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Excluir';
+    deleteButton.classList.add('delete-button');
+    
+    // Adiciona o evento de clique para remover o hábito correspondente
+    deleteButton.addEventListener('click', (function(index) {
+      return function() {
+        removeHabit(index);
+      };
+    })(i));
+    
     habitItem.appendChild(habitName);
     habitItem.appendChild(habitDescription);
     habitItem.appendChild(habitGoal);
     habitItem.appendChild(habitFrequency);
+    habitItem.appendChild(deleteButton);
     
     habitList.appendChild(habitItem);
   }

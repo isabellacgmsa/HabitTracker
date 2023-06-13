@@ -5,25 +5,42 @@ body {
     padding: 20px;
   }
   
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
   h1 {
     text-align: center;
     color: #333;
+    margin-bottom: 20px;
   }
   
-  .habit-form {
+  .form-group {
     display: flex;
     align-items: center;
-    max-width: 400px;
-    margin: 20px auto;
+    margin-bottom: 20px;
   }
   
-  .habit-input {
+  .form-group label {
+    margin-right: 10px;
+    width: 100px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .form-group input[type="text"],
+  .form-group select {
     flex: 1;
     padding: 10px;
     font-size: 16px;
   }
   
-  .habit-button {
+  .add-button {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: #fff;
@@ -35,15 +52,40 @@ body {
   .habit-list {
     list-style-type: none;
     padding: 0;
-    max-width: 400px;
-    margin: 0 auto;
   }
   
   .habit-item {
     background-color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .habit-name {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .habit-description,
+  .habit-goal,
+  .habit-frequency {
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .habit-frequency {
+    font-style: italic;
+  }
+  
+  .delete-button {
+    background-color: #ff5a5a;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
   }
   
