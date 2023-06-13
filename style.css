@@ -88,4 +88,17 @@ body {
     border-radius: 4px;
     cursor: pointer;
   }
+  .edit-button {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-button:hover {
+    background-color: #23527c;
+  }
   
