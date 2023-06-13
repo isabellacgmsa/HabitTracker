@@ -31,7 +31,8 @@ function addOrEditHabit() {
         name: habitName,
         description: description,
         goal: goal,
-        frequency: frequency
+        frequency: frequency,
+        completed: false
       };
 
       habits.push(habit);
@@ -45,6 +46,14 @@ function addOrEditHabit() {
 function removeHabit(index) {
   habits.splice(index, 1);
   renderHabits();
+}
+
+// Função para marcar/desmarcar a meta como realizada hoje
+function toggleGoalCompletion(index) {
+  if (index >= 0 && index < habits.length) {
+    habits[index].completed = !habits[index].completed;
+    renderHabits();
+  }
 }
 
 // Função para entrar no modo de edição de um hábito
@@ -84,6 +93,10 @@ function renderHabits() {
     var habitItem = document.createElement('li');
     habitItem.classList.add('habit-item');
 
+    if (habits[i].completed) {
+      habitItem.classList.add('completed');
+    }
+
     var habitName = document.createElement('h3');
     habitName.textContent = habits[i].name;
 
@@ -95,6 +108,17 @@ function renderHabits() {
 
     var habitFrequency = document.createElement('p');
     habitFrequency.textContent = 'Frequência: ' + habits[i].frequency;
+
+    var toggleButton = document.createElement('button');
+    toggleButton.textContent = habits[i].completed ? 'Desmarcar' : 'Marcar';
+    toggleButton.classList.add('toggle-button');
+
+    // Adiciona o evento de clique para marcar/desmarcar a meta como realizada hoje
+    toggleButton.addEventListener('click', (function(index) {
+      return function() {
+        toggleGoalCompletion(index);
+      };
+    })(i));
 
     var editButton = document.createElement('button');
     editButton.textContent = 'Editar';
@@ -122,6 +146,7 @@ function renderHabits() {
     habitItem.appendChild(habitDescription);
     habitItem.appendChild(habitGoal);
     habitItem.appendChild(habitFrequency);
+    habitItem.appendChild(toggleButton);
     habitItem.appendChild(editButton);
     habitItem.appendChild(deleteButton);
 
